@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Jobs from "./pages/Jobs";
+import AdminJobs from "./pages/AdminJobs";
 
 const queryClient = new QueryClient();
 
@@ -23,6 +24,7 @@ const App = () => (
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/jobs" element={<Jobs />} />
+          <Route path="/admin/jobs" element={<AdminJobs />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>

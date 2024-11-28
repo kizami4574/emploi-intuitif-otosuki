@@ -1,14 +1,23 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuthStore } from "../store/authStore";
+import { toast } from "sonner";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+  const login = useAuthStore((state) => state.login);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: Implement login logic
-    console.log("Login attempt", { email, password });
+    const success = login(email, password);
+    if (success) {
+      toast.success("Connexion réussie");
+      navigate("/admin/jobs");
+    } else {
+      toast.error("Email ou mot de passe incorrect");
+    }
   };
 
   return (
@@ -26,7 +35,7 @@ const Login = () => {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="input-primary"
+                className="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-primary"
                 required
               />
             </div>
@@ -39,20 +48,14 @@ const Login = () => {
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="input-primary"
+                className="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-primary"
                 required
               />
             </div>
-            <button type="submit" className="w-full btn-primary">
+            <button type="submit" className="w-full bg-primary text-white py-2 rounded-md hover:bg-primary/90">
               Se connecter
             </button>
           </form>
-          <p className="mt-4 text-center text-sm text-text-secondary">
-            Pas encore de compte ?{" "}
-            <Link to="/register" className="text-accent hover:underline">
-              S'inscrire
-            </Link>
-          </p>
         </div>
       </div>
     </div>

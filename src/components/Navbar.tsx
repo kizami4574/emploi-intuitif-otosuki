@@ -1,8 +1,10 @@
 import { Link, useLocation } from "react-router-dom";
+import { useAuthStore } from "../store/authStore";
 
 const Navbar = () => {
   const location = useLocation();
   const isActive = (path: string) => location.pathname === path;
+  const { isAuthenticated, logout } = useAuthStore();
 
   return (
     <nav className="fixed w-full bg-white shadow-md z-50">
@@ -29,22 +31,43 @@ const Navbar = () => {
             >
               Offres d'emploi
             </Link>
-            <Link
-              to="/login"
-              className={`${
-                isActive("/login") ? "text-accent" : "text-primary"
-              } hover:text-accent transition-colors`}
-            >
-              Se connecter
-            </Link>
-            <Link
-              to="/register"
-              className={`${
-                isActive("/register") ? "text-accent" : "text-primary"
-              } hover:text-accent transition-colors`}
-            >
-              S'inscrire
-            </Link>
+            {isAuthenticated ? (
+              <>
+                <Link
+                  to="/admin/jobs"
+                  className={`${
+                    isActive("/admin/jobs") ? "text-accent" : "text-primary"
+                  } hover:text-accent transition-colors`}
+                >
+                  Gestion des offres
+                </Link>
+                <button
+                  onClick={() => logout()}
+                  className="text-primary hover:text-accent transition-colors"
+                >
+                  Se déconnecter
+                </button>
+              </>
+            ) : (
+              <>
+                <Link
+                  to="/login"
+                  className={`${
+                    isActive("/login") ? "text-accent" : "text-primary"
+                  } hover:text-accent transition-colors`}
+                >
+                  Se connecter
+                </Link>
+                <Link
+                  to="/register"
+                  className={`${
+                    isActive("/register") ? "text-accent" : "text-primary"
+                  } hover:text-accent transition-colors`}
+                >
+                  S'inscrire
+                </Link>
+              </>
+            )}
           </div>
         </div>
       </div>
