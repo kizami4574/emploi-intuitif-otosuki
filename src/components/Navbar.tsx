@@ -41,6 +41,14 @@ const Navbar = () => {
                 >
                   Gestion des offres
                 </Link>
+                <Link
+                  to="/admin/applications"
+                  className={`${
+                    isActive("/admin/applications") ? "text-accent" : "text-primary"
+                  } hover:text-accent transition-colors`}
+                >
+                  Gestion des candidatures
+                </Link>
                 <button
                   onClick={() => logout()}
                   className="text-primary hover:text-accent transition-colors"
