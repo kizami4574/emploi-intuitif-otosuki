@@ -34,7 +34,7 @@ const AdminJobs = () => {
         <div className="flex justify-between items-center mb-8">
           <h1 className="text-3xl font-bold">Gestion des offres d'emploi</h1>
           <Link to="/admin/jobs/create">
-            <Button className="bg-accent hover:bg-accent/90 text-primary gap-2">
+            <Button className="bg-primary hover:bg-primary/90 text-white gap-2">
               <Plus className="h-5 w-5" />
               Créer une offre
             </Button>

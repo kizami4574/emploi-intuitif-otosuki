@@ -9,6 +9,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Jobs from "./pages/Jobs";
 import AdminJobs from "./pages/AdminJobs";
+import CreateJob from "./pages/CreateJob";
 
 const queryClient = new QueryClient();
 
@@ -25,6 +26,7 @@ const App = () => (
           <Route path="/register" element={<Register />} />
           <Route path="/jobs" element={<Jobs />} />
           <Route path="/admin/jobs" element={<AdminJobs />} />
+          <Route path="/admin/jobs/create" element={<CreateJob />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
