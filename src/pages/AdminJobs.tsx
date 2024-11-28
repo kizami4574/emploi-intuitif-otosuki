@@ -9,6 +9,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { Plus, Pencil, Power, Trash2 } from "lucide-react";
 
 interface Job {
   id: number;
@@ -33,7 +34,10 @@ const AdminJobs = () => {
         <div className="flex justify-between items-center mb-8">
           <h1 className="text-3xl font-bold">Gestion des offres d'emploi</h1>
           <Link to="/admin/jobs/create">
-            <Button>Créer une offre</Button>
+            <Button className="bg-accent hover:bg-accent/90 text-primary gap-2">
+              <Plus className="h-5 w-5" />
+              Créer une offre
+            </Button>
           </Link>
         </div>
 
@@ -61,14 +65,14 @@ const AdminJobs = () => {
                   </TableCell>
                   <TableCell>
                     <div className="flex space-x-2">
-                      <Button variant="outline" size="sm">
-                        Modifier
+                      <Button variant="ghost" size="icon">
+                        <Pencil className="h-4 w-4" />
                       </Button>
-                      <Button variant="outline" size="sm">
-                        {job.status === "active" ? "Désactiver" : "Activer"}
+                      <Button variant="ghost" size="icon">
+                        <Power className="h-4 w-4" />
                       </Button>
-                      <Button variant="destructive" size="sm">
-                        Supprimer
+                      <Button variant="ghost" size="icon" className="text-red-500 hover:text-red-700">
+                        <Trash2 className="h-4 w-4" />
                       </Button>
                     </div>
                   </TableCell>
